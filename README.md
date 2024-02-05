@@ -128,5 +128,7 @@ print_screen
 scroll_lock
 ```
 
+Please note that due to [issue](https://github.com/python-xlib/python-xlib/issues/241) in `python-xlib` part of those keys couldn't work on X11 or Wayland.
+
 * `sleep [seconds]` delays execution of the following actions by specified amount of seconds.
 * `run [app] [argument 1] [argument 2] [..] [argument n]` runs specified application (or command) with given arguments. Please note that the `~` symbol is not supported and will not point to the user home directory. Consider writing an absolute path instead.

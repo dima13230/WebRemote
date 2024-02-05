@@ -8,6 +8,8 @@ from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 from flask import Flask, request, render_template
 
+from vkkeys import VKKey
+
 class MyWatchdogHandler(FileSystemEventHandler):
     def on_modified(self, event):
         load_config()
@@ -40,8 +42,10 @@ def key_press(args):
     pressed_keys = []
     for arg in args:
         key = ""
-        if args[0] in Key.__members__:
+        if arg in Key.__members__:
             key = Key.__members__[arg]
+        elif arg in VKKey.__members__:
+            key = VKKey.to_KeyCode(VKKey.__members__[arg])
         else:
             key = arg
         keyb.press(key)
