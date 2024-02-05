@@ -1,5 +1,7 @@
 # WebRemote
 
+![Demo picture](pictures/screenshot.png "Demo picture")
+
 A python application that allows creating custom macros accessible in local network via web interface.
 
 ## Why using it?
