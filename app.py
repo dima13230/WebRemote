@@ -1,4 +1,3 @@
-#!/bin/python
 from pynput import keyboard
 from pynput.keyboard import Key, Controller
 import json
@@ -7,12 +6,20 @@ import time
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 from flask import Flask, request, render_template
+import re
+import socket
 
 from vkkeys import VKKey
 
 class MyWatchdogHandler(FileSystemEventHandler):
     def on_modified(self, event):
         load_config()
+
+def split_string_ignore_quotes(string):
+    # Regular expression pattern to match quoted strings or non-quoted sequences of characters
+    pattern = r'(\'[^\']*\'|"[^"]*"|\S+)'
+    matches = re.findall(pattern, string)
+    return [match.strip('\'"') for match in matches]
 
 macros = {}
 config_path = "config.json"
@@ -80,7 +87,7 @@ def run_macro():
         if macro_arg in macros:
             actions = macros[macro_arg]["actions"]
             for action in actions:
-                action_tokens = str.split(action, " ")
+                action_tokens = split_string_ignore_quotes(action)
                 command = str_to_funcref[action_tokens[0]]
                 args = action_tokens[1:]
                 command(args)
@@ -127,3 +134,14 @@ observer.schedule(event_handler, path=config_path, recursive=False)
 observer.start()
 
 load_config()
+
+if __name__ == '__main__':
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    ip = s.getsockname()[0]
+    s.close()
+
+    print("Your local IP address is {0}".format(ip))
+    print("To access control panel, make sure that the device you connect from is in the same network. In web browser on end device type http://{0}:5000".format(ip))
+    print("Currently there is no HTTPS support for this script, but it should be fine for as long as it is used inside local network only, so you can ignore the following warning about development server.")
+    app.run(host=ip, port=5000)

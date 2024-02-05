@@ -1,4 +1,4 @@
-python-xlib == 0.31
+python-xlib == 0.31; sys_platform == 'linux'
 pynput
 flask
 watchdog

@@ -1,8 +1,0 @@
-#!/bin/bash
-IP=`ip -o route get to 8.8.8.8 | sed -n 's/.*src \([0-9.]\+\).*/\1/p'`
-echo Your local IP address is $IP
-echo To access control panel, make sure that the device you connect from is in the same network. In web browser on end device type http://$IP:5000
-echo Currently there is no HTTPS support for this script, but it should be fine for as long as it is used inside local network only, so you can ignore the following warning about development server.
-echo
-
-flask run --host=$IP

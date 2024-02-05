@@ -15,13 +15,7 @@ Before you start using it, make sure you have Python installed on your system. T
 pip install -r requirements.txt
 ```
 
-If you are using a *nix system or WSL, it is recommended to run the application through a script file called `start`. It will deploy the Flask web server under the local address of your device and provide you with the IP address and port to connect to.
-
-At the moment the application has not been tested in the Windows environment, so there are no instructions for running it on that system, although the process should be no different for *nix systems, except for the lack of support for the `start` script.
-
-If you can't run `start` script or want to run it differently (for example, if you want to specify custom IP or run a Flask with different parameters), you can run it manually with the following command:
-`flask run --host=[IP]`
-Where `[IP]` is an IP address you want to deploy server for, written without square brackets.
+After all required dependencies are installed you can simply run app.py as a normal python script.
 
 ## Setting it up
 
