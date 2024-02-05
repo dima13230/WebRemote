@@ -17,6 +17,10 @@ If you are using a *nix system or WSL, it is recommended to run the application 
 
 At the moment the application has not been tested in the Windows environment, so there are no instructions for running it on that system, although the process should be no different for *nix systems, except for the lack of support for the `start` script.
 
+If you can't run `start` script or want to run it differently (for example, if you want to specify custom IP or run a Flask with different parameters), you can run it manually with the following command:
+`flask run --host=[IP]`
+Where `[IP]` is an IP address you want to deploy server for, written without square brackets.
+
 ## Setting it up
 
 For storing configuration data, `WebRemote` uses JSON config file named `config.json`. It has following fields and parameters:
@@ -54,7 +58,7 @@ In this example:
 #### Macro actions
 
 Each macro action has the following syntax:
-[command] [argument 1] [argument 2] .. [argument n].
+`[command] [argument 1] [argument 2] .. [argument n]`
 
 Currently available actions are:
 * `key [key 1] [key 2] [..] [key n]` emulates keyboard presses. You can pass as many arguments to it as you want and the macro will press them _simultaneously_. A key can be an alphanumeric character or, if it's a special symbol or a key, a string that represents pynput's `Key` class member.
