@@ -1,0 +1,52 @@
+{
+    "rows": 4,
+    "columns": 4,
+    "title": "WebRemote",
+    "background": "#222222",
+    "default_button_color": "#596fff",
+    "wake_up_phone": true,
+    "wake_up_shortcut": "<alt>+a",
+    "macros": {
+        "0,0": {
+            "name": "Previous Media",
+            "color": "#9900cc",
+            "actions": [
+                "key media_previous"
+            ]
+        },
+        "1,0": {
+            "name": "Play/Stop Media",
+            "color": "#9900cc",
+            "actions": [
+                "key media_play_pause"
+            ]
+        },
+        "2,0": {
+            "name": "Next Media",
+            "color": "#9900cc",
+            "actions": [
+                "key media_next" 
+            ]
+        },
+        "3,0": {
+            "name": "Volume +",
+            "color": "#9900cc",
+            "actions": [
+                "key media_volume_up" 
+            ]
+        },
+        "3,1": {
+            "name": "Volume -",
+            "color": "#9900cc",
+            "actions": [
+                "key media_volume_down" 
+            ]
+        },
+        "3,3": {
+            "name": "Window Switch",
+            "actions": [
+                "key alt esc"
+            ]
+        }
+    }
+}
